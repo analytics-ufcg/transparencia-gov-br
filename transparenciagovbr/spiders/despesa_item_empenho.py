@@ -40,7 +40,8 @@ def parse_description(text):
 
     part1, part2 = Text(text[:78].strip()), Text(text[78:])
     try:
-        new["quantidade"] = Decimal(part1.until(" ").strip().replace(".", "").replace(",", "."))
+        new["quantidade"] = Decimal(part1.until(
+            " ").strip().replace(".", "").replace(",", "."))
     except InvalidOperation:
         return new
     new["unidade"] = part1.after(" ").strip()
@@ -82,6 +83,7 @@ def extract_extra_fields(row):
     new.update(parse_description(row["descricao"]))
     return new
 
+
 class DespesaMixin:
     def make_filename(self, url):
         return settings.DOWNLOAD_PATH / "despesa" / urlparse(url).path.rsplit("/", maxsplit=1)[-1]
@@ -105,13 +107,18 @@ class DespesaItemEmpenhoSpider(DespesaMixin, TransparenciaBaseSpider):
 class DespesaEmpenhoSpider(DespesaMixin, TransparenciaBaseSpider):
     name = "despesa_empenho"
     base_url = "http://transparencia.gov.br/download-de-dados/despesas/{year}{month:02d}{day:02d}"
-    start_date = datetime.date(2013, 3, 31)
+    # start_date = datetime.date(2021, 12, 13)
     end_date = today()
     publish_frequency = "daily"
     filename_suffix = "_Despesas_Empenho.csv"
     schema_filename = "despesa_empenho.csv"
 
-class Spider(DespesaMixin, TransparenciaBaseSpider):
+    def __init__(self, start_date=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.start_date = datetime.date.fromisoformat(start_date)
+
+
+class DespesaItemHistoricoSpider(DespesaMixin, TransparenciaBaseSpider):
     name = "despesa_item_historico"
     base_url = "http://transparencia.gov.br/download-de-dados/despesas/{year}{month:02d}{day:02d}"
     start_date = datetime.date(2021, 1, 1)
