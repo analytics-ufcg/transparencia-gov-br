@@ -92,8 +92,6 @@ class DespesaMixin:
 class DespesaItemEmpenhoSpider(DespesaMixin, TransparenciaBaseSpider):
     name = "despesa_item_empenho"
     base_url = "http://transparencia.gov.br/download-de-dados/despesas/{year}{month:02d}{day:02d}"
-    start_date = datetime.date(2013, 3, 31)
-    end_date = today()
     publish_frequency = "daily"
     filename_suffix = "_Despesas_ItemEmpenho.csv"
     schema_filename = "despesa_item_empenho.csv"
@@ -103,26 +101,33 @@ class DespesaItemEmpenhoSpider(DespesaMixin, TransparenciaBaseSpider):
             row.update(extract_extra_fields(row))
             yield row
 
+    def __init__(self, start_date=None, end_date=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.start_date = datetime.date.fromisoformat(start_date)
+        self.end_date = datetime.date.fromisoformat(end_date)
+
 
 class DespesaEmpenhoSpider(DespesaMixin, TransparenciaBaseSpider):
     name = "despesa_empenho"
     base_url = "http://transparencia.gov.br/download-de-dados/despesas/{year}{month:02d}{day:02d}"
-    # start_date = datetime.date(2021, 12, 13)
-    end_date = today()
     publish_frequency = "daily"
     filename_suffix = "_Despesas_Empenho.csv"
     schema_filename = "despesa_empenho.csv"
 
-    def __init__(self, start_date=None, *args, **kwargs):
+    def __init__(self, start_date=None, end_date=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.start_date = datetime.date.fromisoformat(start_date)
+        self.end_date = datetime.date.fromisoformat(end_date)
 
 
 class DespesaItemHistoricoSpider(DespesaMixin, TransparenciaBaseSpider):
     name = "despesa_item_historico"
     base_url = "http://transparencia.gov.br/download-de-dados/despesas/{year}{month:02d}{day:02d}"
-    start_date = datetime.date(2021, 1, 1)
-    end_date = today()
     publish_frequency = "daily"
     filename_suffix = "_Despesas_ItemEmpenhoHistorico.csv"
     schema_filename = "despesa_item_empenho_historico.csv"
+
+    def __init__(self, start_date=None, end_date=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.start_date = datetime.date.fromisoformat(start_date)
+        self.end_date = datetime.date.fromisoformat(end_date)
