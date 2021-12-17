@@ -22,6 +22,18 @@ Apenas um spider:
 ./run.sh <nome-do-spider>
 ```
 
+Apenas um spider com um intervalo de datas:
+```shell
+./run_interval.sh <nome-do-spider> <data-inicio(formato: YYYY-MM-DD)> <data-fim(formato: YYYY-MM-DD)> <caminho-saida>
+```
+Spiders que suportam o intervalo de datas:
+- despesa_item_empenho
+- despesa_empenho
+- despesa_item_historico
+- licitacoes
+- empenhos_relacionados
+
+
 > Nota: consule os nomes dos spiders disponíveis em
 > [transparenciagovbr/spiders/](transparenciagovbr/spiders/]).
 
