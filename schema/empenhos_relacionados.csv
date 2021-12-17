@@ -1,0 +1,11 @@
+field_name,field_type,internal_field_type,original_name
+nr_licitacao,text,text,Número Licitação
+codigo_unidade_gestora,text,text,Código UG
+nome_unidade_gestora,text,text,Nome UG
+codigo_modalidade_compra,text,text,Código Modalidade Compra
+modalidade_compra,text,text,Modalidade Compra
+numero_processo,text,text,Número Processo
+codigo_empenho,text,text,Código Empenho
+data_emissao_empenho,text,text,Data Emissão Empenho
+observacao_empenho,text,text,Observação Empenho
+valor_empenho,decimal,money_real,Valor Empenho (R$)
