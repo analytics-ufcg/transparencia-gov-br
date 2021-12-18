@@ -22,7 +22,19 @@ Apenas um spider:
 ./run.sh <nome-do-spider>
 ```
 
-> Nota: consule os nomes dos spiders disponíveis em
+Apenas um spider com um intervalo de datas:
+```shell
+./run_interval.sh <nome-do-spider> <data-inicio(formato: YYYY-MM-DD)> <data-fim(formato: YYYY-MM-DD)> <caminho-saida>
+```
+Spiders que suportam o intervalo de datas:
+- despesa_item_empenho
+- despesa_empenho
+- despesa_item_historico
+- licitacoes
+- empenhos_relacionados
+
+
+> Nota: consulte os nomes dos spiders disponíveis em
 > [transparenciagovbr/spiders/](transparenciagovbr/spiders/]).
 
 Pode ser interessante rodar algum script de extração fora de um spider (por
@@ -54,5 +66,5 @@ Ou apenas a tabela de um spider específico:
 ./import-postgresql.sh <nome-do-spider>
 ```
 
-> Nota: consule os nomes dos spiders disponíveis em
+> Nota: consulte os nomes dos spiders disponíveis em
 > [transparenciagovbr/spiders/](transparenciagovbr/spiders/]).
