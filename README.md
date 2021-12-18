@@ -34,7 +34,7 @@ Spiders que suportam o intervalo de datas:
 - empenhos_relacionados
 
 
-> Nota: consule os nomes dos spiders disponíveis em
+> Nota: consulte os nomes dos spiders disponíveis em
 > [transparenciagovbr/spiders/](transparenciagovbr/spiders/]).
 
 Pode ser interessante rodar algum script de extração fora de um spider (por
@@ -66,5 +66,5 @@ Ou apenas a tabela de um spider específico:
 ./import-postgresql.sh <nome-do-spider>
 ```
 
-> Nota: consule os nomes dos spiders disponíveis em
+> Nota: consulte os nomes dos spiders disponíveis em
 > [transparenciagovbr/spiders/](transparenciagovbr/spiders/]).

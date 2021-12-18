@@ -8,7 +8,7 @@ if [ "$1" = "--use-mirror" ]; then
 	OPTS="-a use_mirror=true"
 	shift
 else
-	OPTS="-a start_date=2021-12-01"
+	OPTS=""
 fi
 
 run_spider() {
