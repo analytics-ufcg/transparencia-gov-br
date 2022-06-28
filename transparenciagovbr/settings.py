@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
+import os
 
 # Scrapy settings for transparenciagovbr project
 #
@@ -87,7 +88,7 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 HTTPCACHE_ENABLED = True
 HTTPCACHE_EXPIRATION_SECS = 0
-HTTPCACHE_DIR = "httpcache"
+HTTPCACHE_DIR = os.environ.get('HTTPCACHE_DIR')
 HTTPCACHE_IGNORE_HTTP_CODES = []
 HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
@@ -95,6 +96,6 @@ FEED_EXPORTERS = {"csv.gz": "transparenciagovbr.exporters.GzipCsvItemExporter"}
 FEED_FORMAT = "csv.gz"
 
 REPOSITORY_PATH = Path(__file__).parent.parent
-DOWNLOAD_PATH = REPOSITORY_PATH / "data" / "download"
+DOWNLOAD_PATH = Path(os.environ.get('PATH_DOWNLOAD_DADOS_FEDERAIS'))
 
 DOWNLOAD_WARNSIZE = 2 * 1024 * 1024 * 1024
