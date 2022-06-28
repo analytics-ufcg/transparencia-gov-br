@@ -11,6 +11,7 @@ codigo_orgao_superior,text,text,Código Órgão Superior
 nome_orgao_superior,text,text,Nome Órgão Superior
 codigo_orgao,text,text,Código Órgão
 nome_orgao,text,text,Nome Órgão
+uf,text,text,UF
 municipio,text,text,Município
 data_resultado_compra,text,text,Data Resultado Compra
 data_abertura,text,text,Data Abertura
